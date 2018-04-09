@@ -13,7 +13,7 @@ class BaseController:
             help = 'turn off the report after the end of the game',
             action = 'store_true')
         args = parser.parse_args(args)
-        self.no_report = args.no_report
+        self.report = not args.no_report
 
     def start(self):
         # game start
@@ -28,7 +28,7 @@ class BaseController:
         while self.run():
             pass
 
-        if not self.no_report:
+        if self.report:
             self.recorder.report()
 
     def run(self):
