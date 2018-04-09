@@ -8,19 +8,19 @@ class BasePainter:
         print('----\\|/----')
         print('-----|-----')
         print('----/ \\----')
-        print('The word:\n\t', end='')
+        print('The word:\n\t', end = '')
         for i, c in enumerate(word):
             if guess[i]:
-                print(c, end='')
+                print(c, end = '')
             else:
-                print('_', end='')
+                print('_', end = '')
         print()
         print()
 
     def drawWinState(self, word, numFails):
         print()
         print('Congratulations! You win!')
-        print('The word is:\n\t', end='')
+        print('The word is:\n\t', end = '')
         print(word)
         print()
 
@@ -31,7 +31,7 @@ class BasePainter:
         print('-----|-----')
         print('----< \\----')
         print('You Lose!')
-        print('The word is:\n\t', end='')
+        print('The word is:\n\t', end = '')
         print(word)
         print()
 

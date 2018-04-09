@@ -8,7 +8,7 @@ MAX_FAILS = 3
 
 class BaseController:
     def __init__(self, args):
-        parser = argparse.ArgumentParser(description='<<< The Game Hangman >>>')
+        parser = argparse.ArgumentParser(description = '<<< The Game Hangman >>>')
         parser.add_argument('--no-report',
             help = 'turn off the report after the end of the game',
             action = 'store_true')
