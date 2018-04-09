@@ -22,7 +22,6 @@ class BaseController:
         self.guess = [False] * len(self.word)
         self.painter = BasePainter(MAX_FAILS)
         self.recorder = BaseRecorder()
-        self.count = 0
         self.numFails = 0
         self.step = 0
 
