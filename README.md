@@ -32,7 +32,16 @@ Run `python entry.py -h` to check all the options.
 ### Build binary executable
 ```bash
 cd <root>
-. compile.sh
+bash compile.sh
 ```
 
 The executable file "hangman" is generated in `<root>/dist`.
+
+### Install hangman on your machine
+- Linux/Mac OS
+```bash
+cd <root>
+bash install.sh
+```
+
+The executable "hangman" will be installed in `/usr/local/bin`.
