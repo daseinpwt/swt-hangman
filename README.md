@@ -1,6 +1,23 @@
 # Hangman
 This is a console-based implementation of the well-known game "Hangman".
 
+## Installation
+- Linux/Mac OS
+```bash
+cd <root>
+bash install.sh
+```
+
+The executable "hangman" will be installed in `/usr/local/bin`.
+
+After the installation you can run hangman in your terminal:
+```bash
+hangman
+```
+
+### Options
+Run `hangman -h` to check all the options.
+
 ## Development
 ### Setup
 1. Install pipenv
@@ -19,15 +36,12 @@ pipenv shell
 exit
 ```
 
-### Run
+### Direct run
 
 ```bash
 cd <root>/src
 python entry.py
 ```
-
-### Options
-Run `python entry.py -h` to check all the options.
 
 ### Build binary executable
 ```bash
@@ -36,12 +50,3 @@ bash compile.sh
 ```
 
 The executable file "hangman" is generated in `<root>/dist`.
-
-### Install hangman on your machine
-- Linux/Mac OS
-```bash
-cd <root>
-bash install.sh
-```
-
-The executable "hangman" will be installed in `/usr/local/bin`.
