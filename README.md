@@ -2,6 +2,11 @@
 This is a console-based implementation of the well-known game "Hangman".
 
 ## Installation
+### Prerequisite
+1. Install python 3.6
+2. Install pyinstaller
+
+### Platforms
 - Linux/Mac OS
 ```bash
 cd <root>
@@ -49,4 +54,4 @@ cd <root>
 bash compile.sh
 ```
 
-The executable file "hangman" is generated in `<root>/dist`.
+The executable file "hangman" will be generated in `<root>/dist`.
