@@ -35,4 +35,4 @@ cd <root>
 . compile.sh
 ```
 
-The executable file "hangman" is generated in <root>/dist.
+The executable file "hangman" is generated in `<root>/dist`.
