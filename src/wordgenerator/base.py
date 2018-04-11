@@ -11,4 +11,4 @@ class BaseWordGenerator(metaclass=ABCMeta):
 
     @abstractmethod
     def generate_words(self):
-    	pass
+        pass
