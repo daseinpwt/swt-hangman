@@ -9,4 +9,3 @@ class BaseWordGenerator:
     @abstractmethod
     def generate_words(self, filename = ""):
     	pass
-
