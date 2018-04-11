@@ -3,12 +3,8 @@ from random import randint
 
 class Fruit(BaseWordGenerator):
 
-	def get_word(self):
-		words = self.generate_words()
-		return list(words[randint(0, len(words)-1)])
-
-	def generate_words(self):
-		words = [
+    def __init__(self):
+        self.words = [
 			"apple",
 			"lemon",
 			"banana",
@@ -21,6 +17,7 @@ class Fruit(BaseWordGenerator):
 			"cherry",
 			"melon",
 			"grapefruit",
-		]
+    ]
 
-		return words
+    def getWord(self):
+        return list(self.words[randint(0, len(self.words)-1)])

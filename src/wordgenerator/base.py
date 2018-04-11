@@ -6,9 +6,5 @@ class BaseWordGenerator:
         pass
 
     @abstractmethod
-    def get_word(self):
+    def getWord(self):
         pass
-
-    @abstractmethod
-    def generate_words(self):
-    	pass
