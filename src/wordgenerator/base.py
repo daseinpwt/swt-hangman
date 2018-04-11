@@ -1,6 +1,6 @@
 from abc import ABCMeta, abstractmethod
 
-class BaseWordGenerator:
+class BaseWordGenerator(metaclass=ABCMeta):
 
     def __init__(self):
         pass
