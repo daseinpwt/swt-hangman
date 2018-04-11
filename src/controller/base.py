@@ -1,8 +1,8 @@
 import argparse
-from wortschatz.base import BaseWortschatz
 from painter.base import BasePainter
 from recorder.base import BaseRecorder
 import sys
+import wordgenerator
 
 MAX_FAILS = 3
 
@@ -17,8 +17,8 @@ class BaseController:
 
     def start(self):
         # game start
-        self.wortschatz = BaseWortschatz()
-        self.word = self.wortschatz.newWord()
+        self.word_generator = wordgenerator.get('fruit')
+        self.word = ''.join(self.word_generator.get_word())
         self.guess = [False] * len(self.word)
         self.painter = BasePainter(MAX_FAILS)
         self.recorder = BaseRecorder()
