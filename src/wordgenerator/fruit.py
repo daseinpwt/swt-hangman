@@ -3,21 +3,22 @@ from random import randint
 
 class Fruit(BaseWordGenerator):
 
-    def __init__(self):
-        self.words = [
-			"apple",
-			"lemon",
-			"banana",
-			"strawberry",
-			"pineapple",
-			"peach",
-			"kiwi",
-			"grape",
-			"orange",
-			"cherry",
-			"melon",
-			"grapefruit",
-    ]
+    def get_word(self):
+        words = self.generate_words()
+        return list(words[randint(0, len(words)-1)])
 
-    def getWord(self):
-        return list(self.words[randint(0, len(self.words)-1)])
+    def generate_words(self):
+        return [
+            "apple",
+            "lemon",
+            "banana",
+            "strawberry",
+            "pineapple",
+            "peach",
+            "kiwi",
+            "grape",
+            "orange",
+            "cherry",
+            "melon",
+            "grapefruit",
+        ]
