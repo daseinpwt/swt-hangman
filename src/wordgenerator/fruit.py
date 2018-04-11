@@ -7,7 +7,7 @@ class Fruit(BaseWordGenerator):
 		words = self.generate_words()
 		return list(words[randint(0, len(words)-1)])
 
-	def generate_words(self):
+	def generate_words(self, filename = ""):
 		words = [
 			"apple",
 			"lemon",
