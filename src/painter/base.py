@@ -1,8 +1,8 @@
 class BasePainter:
-    def __init__(self, maxNumFails):
-        self.maxNumFails = maxNumFails
+    def __init__(self, max_num_fails):
+        self.max_num_fails = max_num_fails
 
-    def drawCurrentState(self, guess, word, numFails):
+    def draw_current_state(self, guess, word, num_fails):
         print()
         print('-----O-----')
         print('----\\|/----')
@@ -17,14 +17,14 @@ class BasePainter:
         print()
         print()
 
-    def drawWinState(self, word, numFails):
+    def draw_win_state(self, word, num_fails):
         print()
         print('Congratulations! You win!')
         print('The word is:\n\t', end = '')
         print(word)
         print()
 
-    def drawLoseState(self, guess, word):
+    def draw_lose_state(self, guess, word):
         print()
         print('-----X-----')
         print('----\\|~----')
@@ -35,5 +35,5 @@ class BasePainter:
         print(word)
         print()
 
-    def getNewGuess(self):
+    def get_new_guess(self):
         return input('Please guess a new character: ')
