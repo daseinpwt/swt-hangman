@@ -17,8 +17,8 @@ class BaseController:
 
     def start(self):
         # game start
-        self.word_generator = wordgenerator.get('plaintext')
-        self.word = ''.join(self.word_generator.get_word("carbrands"))
+        self.word_generator = wordgenerator.get('fruit')
+        self.word = ''.join(self.word_generator.get_word().characters)
         self.guess = [False] * len(self.word)
         self.painter = BasePainter(MAX_FAILS)
         self.recorder = BaseRecorder()
