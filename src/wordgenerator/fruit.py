@@ -1,5 +1,5 @@
 from .base import BaseWordGenerator
-from utility.word import Word
+from .word import Word
 from random import randint
 
 class Fruit(BaseWordGenerator):

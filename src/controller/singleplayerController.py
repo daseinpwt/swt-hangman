@@ -10,7 +10,6 @@ class SingleplayerController(GameplayController):
         self.word = self.word_generator.get_word()
         self.word.display_masked_word(self.selected_letters)
 
-    def run_game(self):
         while not self.has_guessed_word():
             letter_input = input('Insert letter: ') # Request user input
             letter_input = self.format_input(letter_input) # Format input, trim and convert to lowercase

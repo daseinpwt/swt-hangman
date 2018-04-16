@@ -3,7 +3,7 @@ class Word:
     def __init__(self, word):
         self.characters = list(word)
 
-    def display_masked_word(self, selected_letters = []):
+    def display_masked_word(self, selected_letters = []): # Has to be moved to Painter
         display_string = ""
         for letter in self.characters:
             has_guessed = False
