@@ -8,6 +8,7 @@ class SingleplayerController(GameplayController):
 
         self.word_generator = wordgenerator.get('fruit')
         self.word = self.word_generator.get_word()
+        # TODO: change to painter later
         self.word.display_masked_word(self.selected_letters)
 
         while not self.has_guessed_word():
@@ -57,7 +58,7 @@ class SingleplayerController(GameplayController):
 
         return guessed_word
 
-    # Method which returns true if the letter has already been used 
+    # Method which returns true if the letter has already been used
     def has_used_letter(self, letter_input):
         has_already_used_letter = False
         for letter in self.selected_letters:
