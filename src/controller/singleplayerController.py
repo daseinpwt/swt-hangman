@@ -23,6 +23,7 @@ class SingleplayerController(GameplayController):
                 if not self.word.is_letter_in_word(letter_input):
                     self.number_of_fails += 1
 
+                # Add the new letter to the list of used letters
                 self.selected_letters.append(letter_input)
                 print("Selected letters: {}".format(self.selected_letters))
                 print("You made {} mistakes".format(self.number_of_fails))
@@ -30,12 +31,14 @@ class SingleplayerController(GameplayController):
 
         print("Well done! You have {} number of fails...".format(self.number_of_fails))
 
+    # Format input letter (lower case and strip spaces)
     def format_input(self, letter):
         string_to_format = letter
         string_to_format = string_to_format.lower()
         string_to_format = string_to_format.strip()
         return string_to_format
 
+    # Method which returns true if the complete word has been guessed
     def has_guessed_word(self):
         count = 0
         for letter in self.word.characters:
@@ -54,6 +57,7 @@ class SingleplayerController(GameplayController):
 
         return guessed_word
 
+    # Method which returns true if the letter has already been used 
     def has_used_letter(self, letter_input):
         has_already_used_letter = False
         for letter in self.selected_letters:
