@@ -7,5 +7,5 @@ class BaseWordGenerator(metaclass=ABCMeta):
         pass
 
     @abstractmethod
-    def generate_words(self, filename = ""):
+    def generate_words(self):
     	pass

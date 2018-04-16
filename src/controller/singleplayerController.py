@@ -6,8 +6,8 @@ class SingleplayerController(GameplayController):
         self.selected_letters = []
         self.number_of_fails = 0
 
-        self.word_generator = wordgenerator.get('fruit')
-        self.word = self.word_generator.get_word()
+        self.word_generator = wordgenerator.get('plaintext')
+        self.word = self.word_generator.get_words_with_filename('default')
         self.word.display_masked_word(self.selected_letters)
 
         while not self.has_guessed_word():
