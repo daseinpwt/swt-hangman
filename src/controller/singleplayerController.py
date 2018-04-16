@@ -15,12 +15,7 @@ class SingleplayerController(GameplayController):
             letter_input = self.format_input(letter_input) # Format input, trim and convert to lowercase
 
             # Check if the letter has already been entered by the user
-            has_already_used_letter = False
-            for letter in self.selected_letters:
-                if letter == letter_input:
-                    has_already_used_letter = True
-
-            if has_already_used_letter:
+            if self.has_used_letter(letter_input):
                 print("The letter has already been used! {}".format(self.selected_letters))
                 print("You made {} mistakes".format(self.number_of_fails))
             else:
@@ -58,3 +53,10 @@ class SingleplayerController(GameplayController):
             guessed_word = True
 
         return guessed_word
+
+    def has_used_letter(self, letter_input):
+        has_already_used_letter = False
+        for letter in self.selected_letters:
+            if letter == letter_input:
+                has_already_used_letter = True
+        return has_already_used_letter

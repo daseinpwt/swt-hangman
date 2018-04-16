@@ -1,5 +1,4 @@
 class Word:
-
     def __init__(self, word):
         self.characters = list(word)
 
