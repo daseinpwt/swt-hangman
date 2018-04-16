@@ -1,6 +1,6 @@
-from controller.base import BaseController
 import sys
+from controller.singleplayerController import SingleplayerController
 
 if __name__ == '__main__':
-    controller = BaseController(sys.argv[1:])
-    controller.start()
+    gameplay_controller = SingleplayerController()
+    gameplay_controller.new_game()
