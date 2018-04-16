@@ -42,20 +42,15 @@ class SingleplayerController(GameplayController):
     def has_guessed_word(self):
         count = 0
         for letter in self.word.characters:
-            has_guessed = False
-
             for guessed_letter in self.selected_letters:
                 if letter == guessed_letter:
-                    has_guessed = True
+                    count += 1
+                    break
 
-            if has_guessed:
-                count += 1
-
-        guessed_word = False
         if count == len(self.word.characters):
-            guessed_word = True
+            return True
 
-        return guessed_word
+        return False
 
     # Method which returns true if the letter has already been used 
     def has_used_letter(self, letter_input):
