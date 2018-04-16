@@ -20,9 +20,7 @@ class Word:
         print("{}".format(display_string))
 
     def is_letter_in_word(self, letter):
-        letter_in_word = False
         for l in self.characters:
             if l == letter:
-                letter_in_word = True
-
-        return letter_in_word
+                return True
+        return False
