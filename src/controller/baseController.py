@@ -1,13 +1,14 @@
 import argparse
 from painter.base import BasePainter
 from recorder.base import BaseRecorder
+from .gameplayController import GameplayController
 import sys
 import wordgenerator
 
 MAX_FAILS = 3
 
-class BaseController:
-    def __init__(self, args):
+class BaseController(GameplayController):
+    def __init__(self, args = []):
         parser = argparse.ArgumentParser(description = '<<< The Game Hangman >>>')
         parser.add_argument('--no-report',
             help = 'turn off the report after the end of the game',
@@ -15,10 +16,10 @@ class BaseController:
         args = parser.parse_args(args)
         self.report = not args.no_report
 
-    def start(self):
+    def new_game(self):
         # game start
         self.word_generator = wordgenerator.get('fruit')
-        self.word = ''.join(self.word_generator.get_word())
+        self.word = self.word_generator.get_word().to_string()
         self.guess = [False] * len(self.word)
         self.painter = BasePainter(MAX_FAILS)
         self.recorder = BaseRecorder()

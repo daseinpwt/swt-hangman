@@ -1,6 +1,10 @@
 class Word:
     def __init__(self, word):
+        self.raw_word = word
         self.characters = list(word)
+
+    def to_string(self):
+        return self.raw_word
 
     # TODO: Has to be moved to Painter
     def display_masked_word(self, selected_letters = []):
