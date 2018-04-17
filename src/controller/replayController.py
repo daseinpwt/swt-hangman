@@ -5,7 +5,7 @@ from .gameplayController import GameplayController
 import sys
 import wordgenerator
 
-MAX_FAILS = 3
+MAX_FAILS = 8
 
 class ReplayController(GameplayController):
     def __init__(self, args = []):
