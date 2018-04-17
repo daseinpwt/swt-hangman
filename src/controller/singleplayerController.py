@@ -9,6 +9,9 @@ class SingleplayerController(GameplayController):
         self.word_generator = wordgenerator.get('plaintext')
         self.word = self.word_generator.get_words_with_filename('default')
 
+        self.run_game()
+
+    def run_game(self):
         # TODO: change to painter later
         self.word.display_masked_word(self.selected_letters)
 
@@ -32,6 +35,7 @@ class SingleplayerController(GameplayController):
                 self.word.display_masked_word(self.selected_letters)
 
         print("Well done! You have {} number of fails...".format(self.number_of_fails))
+        self.new_game()
 
     # Method which returns true if the complete word has been guessed
     def has_guessed_word(self):
