@@ -1,10 +1,10 @@
 import argparse
 from wortschatz.base import BaseWortschatz
-from painter.base import BasePainter
+from painter.painter1 import BasePainter
 from recorder.base import BaseRecorder
 import sys
 
-MAX_FAILS = 3
+MAX_FAILS = 8
 
 class BaseController:
     def __init__(self, args):

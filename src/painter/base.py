@@ -3,19 +3,20 @@ class BasePainter:
         self.maxNumFails = maxNumFails
 
     def drawCurrentState(self, guess, word, numFails):
-        print()
-        print('-----O-----')
-        print('----\\|/----')
-        print('-----|-----')
-        print('----/ \\----')
-        print('The word:\n\t', end = '')
-        for i, c in enumerate(word):
-            if guess[i]:
-                print(c, end = '')
-            else:
-                print('_', end = '')
-        print()
-        print()
+        if numFails > 0:
+            print()
+            print('-----O-----')
+            print('----\\|/----')
+            print('-----|-----')
+            print('----/ \\----')
+            print('The word:\n\t', end = '')
+            for i, c in enumerate(word):
+                if guess[i]:
+                    print(c, end = '')
+                else:
+                    print('_', end = '')
+            print()
+            print()
 
     def drawWinState(self, word, numFails):
         print()
