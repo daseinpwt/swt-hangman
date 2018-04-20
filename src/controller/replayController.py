@@ -1,13 +1,14 @@
 import argparse
 from painter.base import BasePainter
 from recorder.base import BaseRecorder
+from .gameplayController import GameplayController
 import sys
 import wordgenerator
 
-MAX_FAILS = 3
+MAX_FAILS = 8
 
-class BaseController:
-    def __init__(self, args):
+class ReplayController(GameplayController):
+    def __init__(self, args = []):
         parser = argparse.ArgumentParser(description = '<<< The Game Hangman >>>')
         parser.add_argument('--no-report',
             help = 'turn off the report after the end of the game',
@@ -15,21 +16,39 @@ class BaseController:
         args = parser.parse_args(args)
         self.report = not args.no_report
 
-    def start(self):
-        # game start
-        self.word_generator = wordgenerator.get('fruit')
-        self.word = ''.join(self.word_generator.get_word().characters)
-        self.guess = [False] * len(self.word)
-        self.painter = BasePainter(MAX_FAILS)
-        self.recorder = BaseRecorder()
-        self.num_fails = 0
-        self.step = 0
+    def new_game(self):
+        print('========================')
+        print('Welcome to Hangman Game!')
+        print('========================')
+        self.game_idx = 0
 
-        while self.run():
-            pass
+        while True:
+            # game start
+            self.game_idx = self.game_idx + 1
+            print(" <<<      Game %s     >>>\n" % self.game_idx)
 
-        if self.report:
-            self.recorder.report()
+            self.word_generator = wordgenerator.get('fruit')
+            self.word = self.word_generator.get_word().to_string()
+            self.guess = [False] * len(self.word)
+            self.painter = BasePainter(MAX_FAILS)
+            self.recorder = BaseRecorder()
+            self.num_fails = 0
+            self.step = 0
+
+            while self.run():
+                pass
+
+            if self.report:
+                self.recorder.report()
+
+            while True:
+                cont = input("do you want to continue? (y/n): ")
+                if cont == 'y':
+                    break
+                elif cont == 'n':
+                    return
+                else:
+                    print('Please enter y or n!')
 
     def run(self):
         self.step = self.step + 1

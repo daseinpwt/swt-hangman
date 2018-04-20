@@ -6,6 +6,7 @@ class SingleplayerController(GameplayController):
         self.selected_letters = []
         self.number_of_fails = 0
 
+        # TODO: change to painter later
         self.word_generator = wordgenerator.get('plaintext')
         self.word = self.word_generator.get_words_with_filename('default')
 
