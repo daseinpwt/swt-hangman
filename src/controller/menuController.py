@@ -2,6 +2,7 @@ import sys
 from controller.gameplayController import GameplayController
 
 class MenuController:
+
     def __init__(self):
         self.print_menu()
         self.request_input()

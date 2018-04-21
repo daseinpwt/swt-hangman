@@ -6,12 +6,12 @@ from random import randint
 class Plaintext(BaseWordGenerator):
 
     def get_word(self): # Throw error, plaintext files need to be opened with filename
-        raise ValueError('PlaintextWordGenerator get_word(), you should use get_words_with_filename() instead')
+        raise ValueError('PlaintextWordGenerator get_word(), you should use get_word_with_filename() instead')
 
     def generate_words(self, filename):
         pass
 
-    def get_words_with_filename(self, filename):
+    def get_word_with_filename(self, filename):
         file_location = self.format_filename(filename)
 
         # Check if the file exists else throw error

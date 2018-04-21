@@ -1,20 +1,24 @@
 import wordgenerator
+import sys
+from painter.painterfactory import PainterFactory
 
 class GameplayController:
 
     def new_game(self):
         self.selected_letters = []
         self.number_of_fails = 0
+        self.max_fails = 8
 
-        # TODO: change to painter later
+        self.painter = PainterFactory().get_painter(self.max_fails)
+
         self.word_generator = wordgenerator.get('plaintext')
-        self.word = self.word_generator.get_words_with_filename('default')
+        self.word = self.word_generator.get_word_with_filename('default')
 
         self.run_game()
 
     def run_game(self):
-        # TODO: change to painter later
-        self.word.display_masked_word(self.selected_letters)
+        print("Guess the word: ")
+        self.painter.display_masked_word(self.selected_letters, self.word.characters)
 
         while not self.has_guessed_word():
             letter_input = input('Insert letter: ') # Request user input
@@ -29,14 +33,30 @@ class GameplayController:
 
                 # Add the new letter to the list of used letters
                 self.selected_letters.append(letter_input)
-                print("Selected letters: {}".format(self.selected_letters))
-                print("You made {} mistakes".format(self.number_of_fails))
+                self.painter.draw_current_state(self.number_of_fails)
+                print("Selected letters: {}, your total amount of mistakes: {}/{}".format(self.selected_letters, self.number_of_fails, self.max_fails))
 
                 # Should be replaced by recorder method
-                self.word.display_masked_word(self.selected_letters)
+                self.painter.display_masked_word(self.selected_letters, self.word.characters)
 
         print("Well done! You have {} number of fails...".format(self.number_of_fails))
-        self.new_game()
+
+        self.request_replay()
+
+    def request_replay(self):
+        cont = input("do you want to continue? (y/n): ")
+        if cont == 'y':
+            self.new_game()
+        elif cont == 'n':
+            sys.exit
+            return
+        else:
+            print('Please enter y or n!')
+
+    # Method which is called if player does not guess the word within allowed number of tries
+    def game_over(self):
+        self.painter.draw_lose_state(self.word.word)
+        self.request_replay()
 
     # Method which returns true if the complete word has been guessed
     def has_guessed_word(self):
@@ -63,3 +83,5 @@ class GameplayController:
     def update_number_of_fails(self, letter_input):
         if not self.word.is_letter_in_word(letter_input):
             self.number_of_fails += 1
+        if  self.number_of_fails == self.max_fails:
+            self.game_over()

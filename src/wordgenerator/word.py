@@ -1,27 +1,7 @@
 class Word:
     def __init__(self, word):
-        self.raw_word = word
+        self.word = word
         self.characters = list(word)
-
-    def to_string(self):
-        return self.raw_word
-
-    # TODO: Has to be moved to Painter
-    def display_masked_word(self, selected_letters = []):
-        display_string = ""
-        for letter in self.characters:
-            has_guessed = False
-
-            for guessed_letter in selected_letters:
-                if letter == guessed_letter:
-                    has_guessed = True
-
-            if has_guessed:
-                display_string += " {} ".format(letter)
-            else:
-                display_string += " - "
-
-        print("{}".format(display_string))
 
     def is_letter_in_word(self, letter):
         for l in self.characters:
