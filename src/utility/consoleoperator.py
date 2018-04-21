@@ -1,9 +1,12 @@
 import os
+import subprocess
 
 class ConsoleOperator:
 
 	def clear_console(self):
-		if os.name == 'nt':
-			os.system('cls')
-		if os.name =='mac' or os.name == 'posix':
-			os.system('clear')
+		if os.name in ('nt', 'dos'):
+			subprocess.call('cls')
+		elif os.name in ('linux', 'osx', 'posix'):
+			subprocess.call('clear')
+		else:
+			print("\n") * 120
