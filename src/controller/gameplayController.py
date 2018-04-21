@@ -1,6 +1,7 @@
 import wordgenerator
 import sys
 from painter.painterfactory import PainterFactory
+from utility.consoleoperator import ConsoleOperator
 
 class GameplayController:
 
@@ -33,6 +34,7 @@ class GameplayController:
                 print("The letter has already been used! {}".format(self.selected_letters))
                 print("You made {} mistakes".format(self.number_of_fails))
             else:
+                ConsoleOperator().clear_console()
                 self.update_number_of_fails(letter_input)
 
                 # Add the new letter to the list of used letters
