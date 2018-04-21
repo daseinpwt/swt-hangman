@@ -24,6 +24,10 @@ class GameplayController:
             letter_input = input('Insert letter: ') # Request user input
             letter_input = letter_input.lower().strip() # Format input, trim and convert to lowercase
 
+            # If the input is not valid
+            if not self.validate_input(letter_input):
+                continue
+
             # Check if the letter has already been entered by the user
             if self.has_used_letter(letter_input):
                 print("The letter has already been used! {}".format(self.selected_letters))
@@ -42,6 +46,14 @@ class GameplayController:
         print("Well done! You have {} number of fails...".format(self.number_of_fails))
 
         self.request_replay()
+
+    def validate_input(self, user_input):
+        # If the length isnt 1 and the input is not a letter the input is not valid
+        if len(user_input) is not 1 or not user_input.isalpha():
+            print("Your input is not valid, please input one letter [a-z]")
+            return False
+        return True
+
 
     def request_replay(self):
         cont = input("do you want to continue? (y/n): ")
