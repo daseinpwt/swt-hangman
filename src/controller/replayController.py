@@ -30,10 +30,12 @@ class ReplayController(GameplayController):
             self.word_generator = wordgenerator.get('fruit')
             self.word = self.word_generator.get_word().to_string()
             self.guess = [False] * len(self.word)
+            self.guessed_letters = []
             self.painter = BasePainter(MAX_FAILS)
             self.recorder = BaseRecorder()
             self.num_fails = 0
             self.step = 0
+            self.wins = 0
 
             while self.run():
                 pass
@@ -53,6 +55,7 @@ class ReplayController(GameplayController):
     def run(self):
         self.step = self.step + 1
         guess_char = self.painter.get_new_guess()
+        self.guessed_letters.append(guess_char)
         # print("you have guessed %c" % guessChar)
         success = False
         for i, c in enumerate(self.word):
@@ -61,14 +64,17 @@ class ReplayController(GameplayController):
                 success = True
         if not success:
             self.num_fails = self.num_fails + 1
-
-        self.recorder.record(self.step, list(self.guess), self.word, self.num_fails)
-
+        
         if (self.num_fails == MAX_FAILS):
             self.painter.draw_lose_state(self.guess, self.word)
+            game_won = False
+            self.recorder.record(self.step, list(self.guess),self.guessed_letters, self.word, self.num_fails, self.game_idx, self.win, game_won)
             return False
         if all(self.guess):
             self.painter.draw_win_state(self.word, self.num_fails)
+            game_won = True
+            self.wins+=1
+            self.recorder.record(self.step, list(self.guess),self.guessed_letters, self.word, self.num_fails, self.game_idx, self.win, game_won)
             return False
         else:
             self.painter.draw_current_state(self.guess, self.word, self.num_fails)
