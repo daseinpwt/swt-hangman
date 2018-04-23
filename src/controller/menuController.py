@@ -1,12 +1,27 @@
 import sys
 from controller.gameplayController import GameplayController
 from utility.consoleoperator import ConsoleOperator
+from recorder.base import BaseRecorder
 
 class MenuController:
 
     def __init__(self):
+        # We start by asking the user's name
+        self.request_name()
+
+    # Method which asks the name of the user (to be used in recorder)
+    def request_name(self):
+        user_input = input("Please enter your name: ")
+        user_input = user_input.strip()
+
+        if not len(user_input) > 0:
+            print("Your name probably a bit longer :) ?")
+            self.request_name()
+            return
+
+        BaseRecorder().name = user_input
         self.print_menu()
-        self.request_input()
+        self.choose_option()
 
     def print_menu(self):
         print('========================')
@@ -16,7 +31,7 @@ class MenuController:
         print('[2] - Game explanation')
         print('[3] - Highscores')
 
-    def request_input(self):
+    def choose_option(self):
         user_input = input("Choose an option: ") # Request user input
         user_input = user_input.strip()
 
@@ -26,7 +41,7 @@ class MenuController:
                 return
 
         print("You have not selected a valid option, please pick option 1-3")
-        self.request_input()
+        self.choose_option()
 
     def select_option(self, option):
         ConsoleOperator().clear_console()
@@ -46,13 +61,13 @@ class MenuController:
             print("To start the game choose option 1")
 
             self.print_menu()
-            self.request_input()
+            self.choose_option()
         
         if option == 3:
             # Initiate highscore class 
             print("This option is not yet implemented")
             self.print_menu()
-            self.request_input()
+            self.choose_option()
             sys.exit
 
     def check_int(self, s):

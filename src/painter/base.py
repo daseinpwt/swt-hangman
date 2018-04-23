@@ -6,78 +6,102 @@ class BasePainter:
     def draw_current_state(self, numFails):
         print()
         if numFails == 0:
-            print('...........')
-            print('...........')
-            print('...........')
-            print('...........')
-            print('...........')
-            print('...........')
-            print('...........')
-            print('...........')
+            self.zero_fails()
 
         elif numFails == 1:
-            print('..-------..')
-            print('........|..')
-            print('........|..')
-            print('........|..')
-            print('........|..')
-            print('........|..')
-            print('........|..')
+            self.one_fails()
 
         elif numFails == 2:
-            print('..-------..')
-            print('........|..')
-            print('....O...|..')
-            print('........|..')
-            print('........|..')
-            print('........|..')
-            print('........|..')
+            self.two_fails()
 
         elif numFails == 3:
-            print('..-------..')
-            print('........|..')
-            print('....O...|..')
-            print('....|...|..')
-            print('....|...|..')
-            print('........|..')
-            print('........|..')
+            self.three_fails()
 
         elif numFails == 4:
-            print('..-------..')
-            print('........|..')
-            print('....O...|..')
-            print('....|/..|..')
-            print('....|...|..')
-            print('........|..')
-            print('........|..')
+            self.four_fails()
 
         elif numFails == 5:
-            print('..-------..')
-            print('........|..')
-            print('....O...|..')
-            print('...\\|/..|..')
-            print('....|...|..')
-            print('........|..')
-            print('........|..')
+            self.five_fails()
 
         elif numFails == 6:
-            print('..-------..')
-            print('........|..')
-            print('....O...|..')
-            print('...\\|/..|..')
-            print('....|...|..')
-            print('.....\\..|..')
-            print('........|..')
+            self.six_fails()
 
         elif numFails == 7:
-            print('..-------..')
-            print('........|..')
-            print('....O...|..')
-            print('...\\|/..|..')
-            print('....|...|..')
-            print('.../.\\..|..')
-            print('........|..')
+            self.seven_fails()
         print()
+    
+    def zero_fails(self):
+        print('...........')
+        print('...........')
+        print('...........')
+        print('...........')
+        print('...........')
+        print('...........')
+        print('...........')
+        print('...........')
+    
+    def one_fails(self):
+        print('..-------..')
+        print('........|..')
+        print('........|..')
+        print('........|..')
+        print('........|..')
+        print('........|..')
+        print('........|..')
+
+    def two_fails(self):
+        print('..-------..')
+        print('........|..')
+        print('....O...|..')
+        print('........|..')
+        print('........|..')
+        print('........|..')
+        print('........|..')
+
+    def three_fails(self):
+        print('..-------..')
+        print('........|..')
+        print('....O...|..')
+        print('....|...|..')
+        print('....|...|..')
+        print('........|..')
+        print('........|..')
+
+    def four_fails(self):
+        print('..-------..')
+        print('........|..')
+        print('....O...|..')
+        print('....|/..|..')
+        print('....|...|..')
+        print('........|..')
+        print('........|..')
+
+    def five_fails(self):
+        print('..-------..')
+        print('........|..')
+        print('....O...|..')
+        print('...\\|/..|..')
+        print('....|...|..')
+        print('........|..')
+        print('........|..')
+
+    def six_fails(self):
+        print('..-------..')
+        print('........|..')
+        print('....O...|..')
+        print('...\\|/..|..')
+        print('....|...|..')
+        print('.....\\..|..')
+        print('........|..')
+
+    def seven_fails(self):
+        print('..-------..')
+        print('........|..')
+        print('....O...|..')
+        print('...\\|/..|..')
+        print('....|...|..')
+        print('.../.\\..|..')
+        print('........|..')
 
     def draw_win_state(self, word):
         print()

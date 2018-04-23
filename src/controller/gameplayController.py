@@ -2,6 +2,7 @@ import wordgenerator
 import sys
 from painter.painterfactory import PainterFactory
 from utility.consoleoperator import ConsoleOperator
+from recorder.base import BaseRecorder
 
 class GameplayController:
 
@@ -14,6 +15,7 @@ class GameplayController:
 
         self.word_generator = wordgenerator.get('plaintext')
         self.word = self.word_generator.get_word_with_filename('default')
+        BaseRecorder().word = self.word.word
 
         self.run_game()
 
@@ -35,18 +37,22 @@ class GameplayController:
                 print("You made {} mistakes".format(self.number_of_fails))
             else:
                 ConsoleOperator().clear_console()
-                self.update_number_of_fails(letter_input)
 
                 # Add the new letter to the list of used letters
                 self.selected_letters.append(letter_input)
+
+                self.update_number_of_fails(letter_input)
+
+                BaseRecorder().selected_letters = self.selected_letters
                 self.painter.draw_current_state(self.number_of_fails)
                 print("Selected letters: {}, your total amount of mistakes: {}/{}".format(self.selected_letters, self.number_of_fails, self.max_fails))
 
                 # Should be replaced by recorder method
                 self.painter.display_masked_word(self.selected_letters, self.word.characters)
 
+        # You win the game
         print("Well done! You have {} number of fails...".format(self.number_of_fails))
-
+        self.record(1)
         self.request_replay()
 
     def validate_input(self, user_input):
@@ -62,13 +68,14 @@ class GameplayController:
         if cont == 'y':
             self.new_game()
         elif cont == 'n':
-            sys.exit
+            sys.exit()
             return
         else:
             print('Please enter y or n!')
 
     # Method which is called if player does not guess the word within allowed number of tries
     def game_over(self):
+        self.record(0)
         self.painter.draw_lose_state(self.word.word)
         self.request_replay()
 
@@ -99,3 +106,8 @@ class GameplayController:
             self.number_of_fails += 1
         if  self.number_of_fails == self.max_fails:
             self.game_over()
+
+    # Recorder saves to text
+    def record(self, win):
+        score = BaseRecorder().calculate_score(self.word.word, len(self.selected_letters), self.number_of_fails, win)
+        BaseRecorder().write_to_text(score, win)
