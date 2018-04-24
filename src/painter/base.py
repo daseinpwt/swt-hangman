@@ -1,147 +1,109 @@
 class BasePainter:
-    def __init__(self, maxNumFails):
-        self.maxNumFails = maxNumFails
 
-    def draw_current_state(self, guess, word, numFails):
+    def __init__(self, mask):
+        self.mask = mask
+
+    def draw_current_state(self, numFails):
+        print()
         if numFails == 0:
-            print()
-            print('...........')
-            print('...........')
-            print('...........')
-            print('...........')
-            print('...........')
-            print('...........')
-            print('...........')
-            print('...........')
-            print('The word: \n\t', end = '')
-            for i, c in enumerate(word):
-                if guess[i]:
-                    print(c, end = '')
-                else:
-                    print('_', end = '')
-            print()
-            print()
-        elif numFails == 1:
-            print()
-            print('..-------..')
-            print('........|..')
-            print('........|..')
-            print('........|..')
-            print('........|..')
-            print('........|..')
-            print('........|..')
-            print('The word: \n\t', end = '')
-            for i, c in enumerate(word):
-                if guess[i]:
-                    print(c, end = '')
-                else:
-                    print('_', end = '')
-            print()
-            print()
-        elif numFails == 2:
-            print()
-            print('..-------..')
-            print('........|..')
-            print('....O...|..')
-            print('........|..')
-            print('........|..')
-            print('........|..')
-            print('........|..')
-            print('The word: \n\t', end = '')
-            for i, c in enumerate(word):
-                if guess[i]:
-                    print(c, end = '')
-                else:
-                    print('_', end = '')
-            print()
-            print()
-        elif numFails == 3:
-            print()
-            print('..-------..')
-            print('........|..')
-            print('....O...|..')
-            print('....|...|..')
-            print('....|...|..')
-            print('........|..')
-            print('........|..')
-            print('The word: \n\t', end = '')
-            for i, c in enumerate(word):
-                if guess[i]:
-                    print(c, end = '')
-                else:
-                    print('_', end = '')
-            print()
-            print()
-        elif numFails == 4:
-            print()
-            print('..-------..')
-            print('........|..')
-            print('....O...|..')
-            print('....|/..|..')
-            print('....|...|..')
-            print('........|..')
-            print('........|..')
-            print('The word: \n\t', end = '')
-            for i, c in enumerate(word):
-                if guess[i]:
-                    print(c, end = '')
-                else:
-                    print('_', end = '')
-            print()
-            print()
-        elif numFails == 5:
-            print()
-            print('..-------..')
-            print('........|..')
-            print('....O...|..')
-            print('...\\|/..|..')
-            print('....|...|..')
-            print('........|..')
-            print('........|..')
-            print('The word: \n\t', end = '')
-            for i, c in enumerate(word):
-                if guess[i]:
-                    print(c, end = '')
-                else:
-                    print('_', end = '')
-            print()
-            print()
-        elif numFails == 6:
-            print()
-            print('..-------..')
-            print('........|..')
-            print('....O...|..')
-            print('...\\|/..|..')
-            print('....|...|..')
-            print('.....\\..|..')
-            print('........|..')
-            print('The word: \n\t', end = '')
-            for i, c in enumerate(word):
-                if guess[i]:
-                    print(c, end = '')
-                else:
-                    print('_', end = '')
-            print()
-            print()
-        elif numFails == 7:
-            print()
-            print('..-------..')
-            print('........|..')
-            print('....O...|..')
-            print('...\\|/..|..')
-            print('....|...|..')
-            print('.../.\\..|..')
-            print('........|..')
-            print('The word: \n\t', end = '')
-            for i, c in enumerate(word):
-                if guess[i]:
-                    print(c, end = '')
-                else:
-                    print('_', end = '')
-            print()
-            print()
+            self.zero_fails()
 
-    def draw_win_state(self, word, numFails):
+        elif numFails == 1:
+            self.one_fails()
+
+        elif numFails == 2:
+            self.two_fails()
+
+        elif numFails == 3:
+            self.three_fails()
+
+        elif numFails == 4:
+            self.four_fails()
+
+        elif numFails == 5:
+            self.five_fails()
+
+        elif numFails == 6:
+            self.six_fails()
+
+        elif numFails == 7:
+            self.seven_fails()
+        print()
+    
+    def zero_fails(self):
+        print('...........')
+        print('...........')
+        print('...........')
+        print('...........')
+        print('...........')
+        print('...........')
+        print('...........')
+        print('...........')
+    
+    def one_fails(self):
+        print('..-------..')
+        print('........|..')
+        print('........|..')
+        print('........|..')
+        print('........|..')
+        print('........|..')
+        print('........|..')
+
+    def two_fails(self):
+        print('..-------..')
+        print('........|..')
+        print('....O...|..')
+        print('........|..')
+        print('........|..')
+        print('........|..')
+        print('........|..')
+
+    def three_fails(self):
+        print('..-------..')
+        print('........|..')
+        print('....O...|..')
+        print('....|...|..')
+        print('....|...|..')
+        print('........|..')
+        print('........|..')
+
+    def four_fails(self):
+        print('..-------..')
+        print('........|..')
+        print('....O...|..')
+        print('....|/..|..')
+        print('....|...|..')
+        print('........|..')
+        print('........|..')
+
+    def five_fails(self):
+        print('..-------..')
+        print('........|..')
+        print('....O...|..')
+        print('...\\|/..|..')
+        print('....|...|..')
+        print('........|..')
+        print('........|..')
+
+    def six_fails(self):
+        print('..-------..')
+        print('........|..')
+        print('....O...|..')
+        print('...\\|/..|..')
+        print('....|...|..')
+        print('.....\\..|..')
+        print('........|..')
+
+    def seven_fails(self):
+        print('..-------..')
+        print('........|..')
+        print('....O...|..')
+        print('...\\|/..|..')
+        print('....|...|..')
+        print('.../.\\..|..')
+        print('........|..')
+
+    def draw_win_state(self, word):
         print()
         print('Congratulations! You win!')
         print('The word is:\n\t', end = '')
@@ -156,7 +118,7 @@ class BasePainter:
         print('...........')
         print()
 
-    def draw_lose_state(self, guess, word):
+    def draw_lose_state(self, word):
         print()
         print('..-------..')
         print('....|...|..')
@@ -170,5 +132,18 @@ class BasePainter:
         print(word)
         print()
 
-    def get_new_guess(self):
-        return input('Please guess a new character: ')
+    def display_masked_word(self, selected_letters = [], characters = []):
+        display_string = ""
+        for letter in characters:
+            has_guessed = False
+
+            for guessed_letter in selected_letters:
+                if letter == guessed_letter:
+                    has_guessed = True
+
+            if has_guessed:
+                display_string += " {} ".format(letter)
+            else:
+                display_string += "{}".format(self.mask)
+
+        print("{}".format(display_string))
