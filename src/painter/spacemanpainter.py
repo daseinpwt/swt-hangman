@@ -1,10 +1,9 @@
-class BasePainter:
-    def __init__(self, maxNumFails):
-        self.maxNumFails = maxNumFails
+from .base import BasePainter
 
-    def draw_current_state(self, guess, word, numFails):
+class SpacemanPainter(BasePainter):
+
+    def draw_current_state(self, numFails):
         if numFails == 0:
-            print()
             print('.....................')
             print('.....................')
             print('.....................')
@@ -20,16 +19,7 @@ class BasePainter:
             print('.....................')
             print('.....................')
             print('.....................')
-            print('The word: \n\t', end = '')
-            for i, c in enumerate(word):
-                if guess[i]:
-                    print(c, end = '')
-                else:
-                    print('_', end = '')
-            print()
-            print()
         elif numFails == 1:
-            print()
             print('._...................')
             print('/\\\\..................')
             print('\\.\\\\..\\__/.\\__/......')
@@ -45,16 +35,7 @@ class BasePainter:
             print('.....................')
             print('.....................')
             print('.....................')
-            print('The word: \n\t', end = '')
-            for i, c in enumerate(word):
-                if guess[i]:
-                    print(c, end = '')
-                else:
-                    print('_', end = '')
-            print()
-            print()
         elif numFails == 2:
-            print()
             print('._...................')
             print('/\\\\..................')
             print('\\.\\\\..\\__/.\\__/......')
@@ -70,16 +51,7 @@ class BasePainter:
             print('.....................')
             print('.....................')
             print('.....................')
-            print('The word: \n\t', end = '')
-            for i, c in enumerate(word):
-                if guess[i]:
-                    print(c, end = '')
-                else:
-                    print('_', end = '')
-            print()
-            print()
         elif numFails == 3:
-            print()
             print('._...................')
             print('/\\\\..................')
             print('\\.\\\\..\\__/.\\__/......')
@@ -95,16 +67,7 @@ class BasePainter:
             print('..........|..........')
             print('.....................')
             print('.....................')
-            print('The word: \n\t', end = '')
-            for i, c in enumerate(word):
-                if guess[i]:
-                    print(c, end = '')
-                else:
-                    print('_', end = '')
-            print()
-            print()
         elif numFails == 4:
-            print()
             print('._...................')
             print('/\\\\..................')
             print('\\.\\\\..\\__/.\\__/......')
@@ -120,16 +83,7 @@ class BasePainter:
             print('..........|..........')
             print('.....................')
             print('.....................')
-            print('The word: \n\t', end = '')
-            for i, c in enumerate(word):
-                if guess[i]:
-                    print(c, end = '')
-                else:
-                    print('_', end = '')
-            print()
-            print()
         elif numFails == 5:
-            print()
             print('._...................')
             print('/\\\\..................')
             print('\\.\\\\..\\__/.\\__/......')
@@ -145,16 +99,7 @@ class BasePainter:
             print('..........|..........')
             print('.....................')
             print('.....................')
-            print('The word: \n\t', end = '')
-            for i, c in enumerate(word):
-                if guess[i]:
-                    print(c, end = '')
-                else:
-                    print('_', end = '')
-            print()
-            print()
         elif numFails == 6:
-            print()
             print('._...................')
             print('/\\\\..................')
             print('\\.\\\\..\\__/.\\__/......')
@@ -170,16 +115,7 @@ class BasePainter:
             print('..........|..........')
             print('........./...........')
             print('.....................')
-            print('The word: \n\t', end = '')
-            for i, c in enumerate(word):
-                if guess[i]:
-                    print(c, end = '')
-                else:
-                    print('_', end = '')
-            print()
-            print()
         elif numFails == 7:
-            print()
             print('._...................')
             print('/\\\\..................')
             print('\\.\\\\..\\__/.\\__/......')
@@ -195,31 +131,9 @@ class BasePainter:
             print('..........|..........')
             print('........./.\\.........')
             print('.....................')
-            print('The word: \n\t', end = '')
-            for i, c in enumerate(word):
-                if guess[i]:
-                    print(c, end = '')
-                else:
-                    print('_', end = '')
-            print()
-            print()
-
-    def draw_win_state(self, word, numFails):
-        print()
-        print('Congratulations! You win!')
-        print('The word is:\n\t', end = '')
-        print(word)
-        print()
-        print()
-        print('...........')
-        print('....YOU....')
-        print('....ARE....')
-        print('.....A.....')
-        print('...CHAMP...')
-        print('...........')
         print()
 
-    def draw_lose_state(self, guess, word):
+    def draw_lose_state(self, word):
         print()
         print('._...................')
         print('/\\\\..................')
@@ -240,6 +154,3 @@ class BasePainter:
         print('The word is:\n\t', end = '')
         print(word)
         print()
-
-    def get_new_guess(self):
-        return input('Please guess a new character: ')
