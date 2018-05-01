@@ -1,8 +1,5 @@
 import sys
-from controller.singleplayerController import SingleplayerController
-from controller.replayController import ReplayController
-from controller.baseController import BaseController
+from controller.menuController import MenuController
 
 if __name__ == '__main__':
-    gameplay_controller = ReplayController()
-    gameplay_controller.new_game()
+    menu = MenuController()
