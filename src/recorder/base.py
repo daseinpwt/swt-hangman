@@ -4,7 +4,7 @@ import uuid
 from utility.singleton import Singleton
 
 class BaseRecorder(metaclass=Singleton):
-
+    
     def __init__(self):
         self.id = uuid.uuid4()
         self.name = ''

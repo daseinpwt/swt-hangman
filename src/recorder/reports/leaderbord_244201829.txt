@@ -1,0 +1,2 @@
+bdf89dbf-d392-43f9-a70d-a7967fafface,a,volkswagen,136,['a', 'j', 'v', 'o', 'l', 'k', 's', 'w', 'g', 'e', 'n'],11,win
+bdf89dbf-d392-43f9-a70d-a7967fafface,a,peugeot,14,['h', 'l', 'e', 'm', 'k', 'd', 'n', 't', 'c', 'w'],10,lose

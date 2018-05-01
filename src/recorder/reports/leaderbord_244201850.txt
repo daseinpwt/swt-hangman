@@ -1,0 +1,4 @@
+f650f696-45f5-4f56-ace9-d5f40f665e20,a,honda,166,['j', 'l', 'o', 'p', 'e', 'h', 'n', 'd', 'a'],9,win
+f650f696-45f5-4f56-ace9-d5f40f665e20,a,honda,0,['j', 'e', 'w', 'i', 'l', 'c', 'r', 'q'],8,lose
+f650f696-45f5-4f56-ace9-d5f40f665e20,a,mercedes,12,['j', 'l', 'e', 'o', 'v', 'w', 'g', 'm', 'x', 'q'],10,lose
+f650f696-45f5-4f56-ace9-d5f40f665e20,a,saab,0,['f', 'h', 'd', 'o', 'p', 'l', 'w', 'c'],8,lose
