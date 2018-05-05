@@ -20,9 +20,6 @@ After the installation you can run hangman in your terminal:
 hangman
 ```
 
-### Options
-Run `hangman -h` to check all the options.
-
 ## Development
 ### Setup
 1. Install pipenv
