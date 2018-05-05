@@ -1,4 +1,6 @@
-import glob, os
+import glob
+import os
+import sys
 import datetime
 import uuid
 from utility.singleton import Singleton
@@ -20,15 +22,23 @@ class BaseRecorder(metaclass=Singleton):
         # The current time we use to generate unique text file
         self.set_current_time()
 
+        if getattr(sys, 'frozen', False):
+            application_path = os.path.dirname(sys.executable)
+        elif __file__:
+            application_path = os.path.dirname(os.path.realpath(__file__))
+
+        self.reports_dir = application_path + '/reports'
+        if not os.path.exists(self.reports_dir):
+            os.makedirs(self.reports_dir)
+
     def set_current_time(self):
         now = datetime.datetime.now()
         self.current_time = "{}{}{}{}".format(now.day, now.month, now.year, now.second)
 
     def read_files(self):
-        dir_path = os.path.dirname(os.path.realpath(__file__))
         extention = ".txt"
         with_name = "leaderbord_"
-        path = "{}/reports/{}*{}".format(dir_path, with_name, extention)
+        path = "{}/{}*{}".format(self.reports_dir, with_name, extention)
         files = glob.glob(path)
         for file in files:
             f = open(file, 'r')
@@ -90,5 +100,4 @@ class BaseRecorder(metaclass=Singleton):
 
     def format_filename(self, filename):
         extention = ".txt"
-        dir_path = os.path.dirname(os.path.realpath(__file__))
-        return "{}/reports/{}{}".format(dir_path, filename, extention)
+        return "{}/{}{}".format(self.reports_dir, filename, extention)

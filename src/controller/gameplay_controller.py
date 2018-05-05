@@ -2,6 +2,7 @@ import wordgenerator
 import sys
 from controller.base_controller import BaseController
 from painter.painterfactory import PainterFactory
+from wordgenerator.plaintext import Plaintext
 from recorder.base import BaseRecorder
 
 class GameplayController(BaseController):
@@ -17,7 +18,7 @@ class GameplayController(BaseController):
         self.max_fails = max_fails
         self.variant = variant
         self.painter = PainterFactory().get_painter(self.max_fails, self.variant)
-        self.word_generator = wordgenerator.get('plaintext')
+        self.word_generator = Plaintext()
 
         self.selected_letters = []
         self.number_of_fails = 0

@@ -1,4 +1,5 @@
-import sys, os
+import sys
+import os
 from .base import BaseWordGenerator
 from .word import Word
 from random import randint
@@ -30,5 +31,8 @@ class Plaintext(BaseWordGenerator):
     # Formats filepath, current filepath is set to /text folder inside wordgenerator
     def format_filename(self, filename):
         extention = ".txt"
-        dir_path = os.path.dirname(os.path.realpath(__file__))
+        if hasattr(sys, '_MEIPASS'):
+            dir_path = sys._MEIPASS + '/wordgenerator'
+        else:
+            dir_path = os.path.dirname(os.path.realpath(__file__))
         return "{}/text/{}{}".format(dir_path, filename, extention)

@@ -137,6 +137,7 @@ class MenuController(BaseController):
                 self.clear_console()
                 self.print_welcome_msg()
                 print('Difficulty settings:')
+                print('( For Spaceman, only Normal difficulty is available )')
                 if self.game_version == self.VERSION_NORMAL:
                     print('[1] - Easy Game, 12 trials' +\
                         self.selected_mark(self.game_difficulty == self.DIFFICULTY_EASY))
