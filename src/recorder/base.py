@@ -23,11 +23,10 @@ class BaseRecorder(metaclass=Singleton):
         self.set_current_time()
 
         if getattr(sys, 'frozen', False):
-            application_path = os.path.dirname(sys.executable)
-        elif __file__:
-            application_path = os.path.dirname(os.path.realpath(__file__))
+            self.reports_dir = os.path.dirname(sys.executable) + '/hangman-reports'
+        else:
+            self.reports_dir = os.path.dirname(os.path.realpath(__file__)) + '/reports'
 
-        self.reports_dir = application_path + '/reports'
         if not os.path.exists(self.reports_dir):
             os.makedirs(self.reports_dir)
 
